@@ -10,6 +10,8 @@
 <meta property="og:image" content="https://morgan-soupama.github.io/arpex-lambo-wake.webp">
 <meta property="og:url" content="https://morgan-soupama.github.io/">
 <link rel="canonical" href="https://morgan-soupama.github.io/">
+<link rel="alternate" hreflang="en" href="https://morgan-soupama.github.io/?lang=en">
+<link rel="alternate" hreflang="fr" href="https://morgan-soupama.github.io/?lang=fr">
 <meta name="theme-color" content="#101a2b">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23101a2b'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='700' font-size='15' text-anchor='middle' fill='%23ff6a4d'%3EMS%3C/text%3E%3C/svg%3E">
 <title>Morgan Soupama | CFD & Thermal Management Engineer</title>
@@ -181,6 +183,33 @@ footer p{margin:0;color:var(--muted)}
   .solo .readout.r4{grid-template-columns:repeat(2,minmax(0,1fr))}
   .hero{padding-block:36px 0}
 }
+
+/* language switch */
+.lang{display:flex;flex:none;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.lang button{font:500 12px/1 var(--f-mono);letter-spacing:.06em;padding:7px 9px;border:0;background:transparent;color:var(--muted);cursor:pointer}
+.lang button+button{border-left:1px solid var(--line)}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.lang button:hover:not([aria-pressed="true"]){color:var(--ink);background:var(--chip)}
+
+/* project index */
+#projects{padding-top:56px}
+.toc{columns:2;column-gap:40px}
+.toc-group{break-inside:avoid;margin:0 0 28px}
+.toc-group h3{font-family:var(--f-mono);font-weight:500;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+.toc-item{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:16px;align-items:baseline;padding:11px 0;border-top:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.toc-group .toc-item:last-child{border-bottom:1px solid var(--line)}
+.toc-item .t{font-family:var(--f-display);font-weight:600;font-size:19px;line-height:1.2}
+.toc-item .y{grid-column:2;grid-row:1;font-family:var(--f-mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.toc-item .d{grid-column:1 / -1;grid-row:2;font-size:13.5px;color:var(--muted);margin-top:2px}
+.toc-item:hover .t,.toc-item:focus-visible .t{color:var(--accent)}
+.toc-item:hover .y::after{content:" →";color:var(--accent)}
+.run,.card{scroll-margin-top:16px}
+
+.to-index{position:fixed;right:max(16px,calc(env(safe-area-inset-right,0px) + 16px));bottom:calc(env(safe-area-inset-bottom,0px) + 16px);z-index:6;display:inline-flex;gap:6px;align-items:center;font:500 13px/1 var(--f-body);padding:10px 14px;border-radius:4px;background:var(--ink);color:var(--surface);text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.to-index:hover{background:var(--accent);color:var(--accent-ink)}
+
+@media (max-width:900px){ .toc{columns:1} }
+@media (max-width:560px){ .nav .wrap{gap:10px} .toc-item .t{font-size:17px} }
 </style>
 
 
@@ -191,103 +220,141 @@ footer p{margin:0;color:var(--muted)}
   <div class="wrap">
     <a class="brand" href="#top">M. Soupama</a>
     <ul>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#aero">Aero &amp; CFD</a></li>
-      <li><a href="#energy">Energy systems</a></li>
-      <li><a href="#management">Management</a></li>
-      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#projects" data-fr="Projets">Projects</a></li>
+      <li><a href="#experience" data-fr="Expérience">Experience</a></li>
+      <li><a href="#aero" data-fr="Aéro &amp;amp; CFD">Aero &amp; CFD</a></li>
+      <li><a href="#energy" data-fr="Énergétique">Energy systems</a></li>
+      <li><a href="#management" data-fr="Gestion">Management</a></li>
+      <li><a href="#certifications" data-fr="Certifications">Certifications</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+    </div>
   </div>
 </nav>
 
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="eyebrow">Engineering portfolio · 2023 – 2026</div>
+    <div class="eyebrow" data-fr="Portfolio d’ingénieur · 2023 – 2026">Engineering portfolio · 2023 – 2026</div>
     <h1>Morgan Soupama</h1>
-    <p class="role">CFD &amp; Thermal Management Engineer</p>
+    <p class="role" data-fr="Ingénieur CFD &amp;amp; Thermal Management">CFD &amp; Thermal Management Engineer</p>
     <div class="hero-grid">
       <div>
-        <p class="lede">Mechanical &amp; Energy engineer from INSA Hauts-de-France, specialised in <strong>CFD and thermal management</strong>. I build, calibrate and validate simulation models against experimental data, from battery cooling loops to race-car aerodynamics. My long-term goal is motorsport aerodynamics.</p>
+        <p class="lede" data-fr="Ingénieur en Mécanique &amp;amp; Énergétique de l’INSA Hauts-de-France, spécialisé en &lt;strong&gt;CFD et thermal management&lt;/strong&gt;. Je construis, calibre et valide des modèles de simulation à partir de données expérimentales, des boucles de refroidissement de batteries à l’aérodynamique de voitures de course. Mon objectif à long terme : l’aérodynamique en sport automobile.">Mechanical &amp; Energy engineer from INSA Hauts-de-France, specialised in <strong>CFD and thermal management</strong>. I build, calibrate and validate simulation models against experimental data, from battery cooling loops to race-car aerodynamics. My long-term goal is motorsport aerodynamics.</p>
         <div class="contact-row">
-          <a class="btn primary" href="https://www.linkedin.com/in/morgan-soupama" target="_blank" rel="noopener">LinkedIn profile</a>
+          <a class="btn primary" href="https://www.linkedin.com/in/morgan-soupama" target="_blank" rel="noopener" data-fr="Profil LinkedIn">LinkedIn profile</a>
           <button class="btn" type="button" id="copy-mail" data-mail="morgan.soupama@gmail.com"><span class="mail">morgan.soupama@gmail.com</span></button>
         </div>
         <div class="copied" id="copied-1" aria-live="polite"></div>
       </div>
       <dl class="facts">
-        <div><dt>Available</dt><dd>From January 2027</dd></div>
-        <div><dt>Based in</dt><dd>France, open to relocation</dd></div>
-        <div><dt>Degree</dt><dd>MSc Mechanical &amp; Energy Eng., awarded March 2027</dd></div>
-        <div><dt>Languages</dt><dd>French, Creole (native) · English C1, TOEIC 895 · Spanish A2</dd></div>
+        <div><dt data-fr="Disponible">Available</dt><dd data-fr="À partir de janvier 2027">From January 2027</dd></div>
+        <div><dt data-fr="Basé en">Based in</dt><dd data-fr="France, mobilité géographique">France, open to relocation</dd></div>
+        <div><dt data-fr="Diplôme">Degree</dt><dd data-fr="Ingénieur Mécanique &amp;amp; Énergétique, diplôme remis en mars 2027">MSc Mechanical &amp; Energy Eng., awarded March 2027</dd></div>
+        <div><dt data-fr="Langues">Languages</dt><dd data-fr="Français, créole (natifs) · Anglais C1, TOEIC 895 · Espagnol A2">French, Creole (native) · English C1, TOEIC 895 · Spanish A2</dd></div>
       </dl>
     </div>
     <figure class="strip">
-      <img src="arpex-lambo-wake.webp" alt="STAR-CCM+ velocity field and streamlines around the Lamborghini Vision body, showing the rear wake" width="1155" height="222">
-      <div class="legend" aria-hidden="true"><span>0 m/s</span><span class="bar"></span><span>76.2 m/s</span></div>
-      <figcaption>Velocity field and rear wake of the Lamborghini Vision body studied in the ARPEX project, STAR-CCM+.</figcaption>
+      <img src="arpex-lambo-wake.webp" alt="STAR-CCM+ velocity field and streamlines around the Lamborghini Vision body, showing the rear wake" data-fr-alt="Champ de vitesse STAR-CCM+ et lignes de courant autour de la Lamborghini Vision, avec le sillage arrière" width="1155" height="222">
+      <div class="legend" aria-hidden="true"><span>0 m/s</span><span class="bar"></span><span data-fr="76,2 m/s">76.2 m/s</span></div>
+      <figcaption data-fr="Champ de vitesse et sillage arrière de la carrosserie Lamborghini Vision étudiée dans le projet ARPEX, STAR-CCM+.">Velocity field and rear wake of the Lamborghini Vision body studied in the ARPEX project, STAR-CCM+.</figcaption>
     </figure>
     <div class="skills">
-      <div><h3>CFD software</h3><p>Simcenter STAR-CCM+, Ansys Fluent, OpenFOAM</p></div>
-      <div><h3>Methods</h3><p>Meshing, RANS turbulence modelling, conjugate heat transfer, multiphase (VOF, Lagrangian), overset meshes</p></div>
-      <div><h3>CAD</h3><p>CATIA V5, SolidWorks, Fusion 360</p></div>
-      <div><h3>Programming</h3><p>Python, MATLAB, data analysis and post-processing</p></div>
+      <div><h3 data-fr="Logiciels CFD">CFD software</h3><p>Simcenter STAR-CCM+, Ansys Fluent, OpenFOAM</p></div>
+      <div><h3 data-fr="Méthodes">Methods</h3><p data-fr="Maillage, modélisation RANS de la turbulence, transferts thermiques conjugués, multiphasique (VOF, lagrangien), maillages overset">Meshing, RANS turbulence modelling, conjugate heat transfer, multiphase (VOF, Lagrangian), overset meshes</p></div>
+      <div><h3 data-fr="CAO">CAD</h3><p>CATIA V5, SolidWorks, Fusion 360</p></div>
+      <div><h3 data-fr="Programmation">Programming</h3><p data-fr="Python, MATLAB, analyse de données et post-traitement">Python, MATLAB, data analysis and post-processing</p></div>
     </div>
   </div>
 </header>
 
 <main>
+<!-- PROJECT INDEX -->
+<section class="block" id="projects">
+  <div class="wrap">
+    <div class="sec-head"><div class="bar"></div><h2 data-fr="Sommaire des projets">All projects</h2><p data-fr="Douze projets dans quatre domaines. Cliquez sur un projet pour y accéder directement.">Twelve projects in four areas. Select one to jump straight to it.</p></div>
+    <div class="toc">
+      <div class="toc-group">
+        <h3 data-fr="Expérience en entreprise et en recherche">Industry &amp; research experience</h3>
+        <a class="toc-item" href="#p-its"><span class="t" data-fr="Refroidissement de batterie par caloduc">Loop heat pipe battery cooling</span><span class="d" data-fr="Stage, ITS Surabaya · CFD, transferts conjugués">Internship, ITS Surabaya · CFD, conjugate heat transfer</span><span class="y">2026</span></a>
+        <a class="toc-item" href="#p-egis"><span class="t" data-fr="Réhabilitation d’un réseau RIA">Fire hose reel network rehabilitation</span><span class="d" data-fr="Stage, Egis · dimensionnement hydraulique">Internship, Egis · hydraulic sizing</span><span class="y">2024</span></a>
+      </div>
+      <div class="toc-group">
+        <h3 data-fr="Aérodynamique &amp;amp; CFD">Aerodynamics &amp; CFD</h3>
+        <a class="toc-item" href="#p-arpex"><span class="t" data-fr="ARPEX, concept-car électrique de course">ARPEX electric racing concept car</span><span class="d" data-fr="Chef de projet · aérodynamique externe">Project lead · external aerodynamics</span><span class="y">2025–26</span></a>
+        <a class="toc-item" href="#p-nascar"><span class="t" data-fr="Aspiration en NASCAR, maillage overset">NASCAR drafting, overset mesh</span><span class="d" data-fr="Maillage mobile · interaction entre véhicules">Moving mesh · vehicle interaction</span><span class="y">2025</span></a>
+        <a class="toc-item" href="#p-novares"><span class="t" data-fr="Refroidissement multiphasique par jet d’huile de moteurs électriques">Multiphase oil-jet cooling for e-motors</span><span class="d" data-fr="Cas industriel, Novares · VOF, lagrangien">Industrial case, Novares · VOF, Lagrangian</span><span class="y">2025</span></a>
+        <a class="toc-item" href="#p-turbulence"><span class="t" data-fr="Turbulence en aval d’une marche descendante">Backward-facing step turbulence</span><span class="d" data-fr="Validation RANS · contrôle d’écoulement">RANS validation · flow control</span><span class="y">2026</span></a>
+        <a class="toc-item" href="#p-openfoam"><span class="t" data-fr="Cas d’entraînement OpenFOAM">OpenFOAM practice cases</span><span class="d" data-fr="NACA 0012 · cylindre · Python">NACA 0012 · cylinder · Python</span><span class="y">2025–26</span></a>
+      </div>
+      <div class="toc-group">
+        <h3 data-fr="Énergétique &amp;amp; bâtiment">Energy &amp; building systems</h3>
+        <a class="toc-item" href="#p-smoke"><span class="t" data-fr="Désenfumage, Philharmonie de Paris">Smoke extraction, Philharmonie de Paris</span><span class="d" data-fr="Réseau aéraulique · choix du ventilateur">Duct network · fan selection</span><span class="y">2025–26</span></a>
+        <a class="toc-item" href="#p-renovation"><span class="t" data-fr="Rénovation thermique d’une maison">Thermal renovation of a house</span><span class="d" data-fr="Bilan des déperditions · RT 2012">Heat-loss audit · RT 2012</span><span class="y">2025</span></a>
+        <a class="toc-item" href="#p-solar"><span class="t" data-fr="Casquette solaire et apports par vitrage">Solar overhang and window heat gains</span><span class="d" data-fr="Géométrie solaire · irradiance">Solar geometry · irradiance</span><span class="y">2025</span></a>
+        <a class="toc-item" href="#p-biogas"><span class="t" data-fr="Unité de méthanisation en Martinique">Biogas plant in Martinique</span><span class="d" data-fr="Méthanisation · cogénération et rentabilité">Anaerobic digestion · CHP economics</span><span class="y">2026</span></a>
+      </div>
+      <div class="toc-group">
+        <h3 data-fr="Gestion de projet">Project management</h3>
+        <a class="toc-item" href="#p-pongo"><span class="t" data-fr="Programme d’école à Pongo-Songo">Pongo-Songo school programme</span><span class="d" data-fr="Chef de projet · cahier des charges, budget, risques">Project lead · charter, budget, risks</span><span class="y">2025</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- EXPERIENCE -->
 <section class="block" id="experience">
   <div class="wrap">
-    <div class="sec-head"><div class="bar"></div><h2>Industry &amp; research experience</h2><p>Two internships, one in battery thermal management and one in building fluid systems. The reports are confidential, so only summaries are shown.</p></div>
+    <div class="sec-head"><div class="bar"></div><h2 data-fr="Expérience en entreprise et en recherche">Industry &amp; research experience</h2><p data-fr="Deux stages, l’un en thermal management de batteries, l’autre en fluides du bâtiment. Les rapports sont confidentiels : seules des synthèses sont présentées.">Two internships, one in battery thermal management and one in building fluid systems. The reports are confidential, so only summaries are shown.</p></div>
 
-    <article class="run">
+    <article class="run" id="p-its">
       <div class="body">
-        <div class="meta"><span>May – Oct 2026</span><span>6-month end-of-studies internship</span><span>Surabaya, Indonesia</span></div>
-        <h3>Loop heat pipe battery cooling for electric vehicles</h3>
-        <p class="sub">CFD Engineering Intern · Institut Teknologi Sepuluh Nopember (ITS)</p>
-        <p>Transient 3D CFD study of a Li-ion battery pack cooled by a loop heat pipe with ethanol as the working fluid. I built the STAR-CCM+ model, calibrated it against the lab test rig and used it to study pump flow rate and cell spacing. The results feed a scientific paper prepared by my supervisor.</p>
+        <div class="meta"><span data-fr="Mai – oct. 2026">May – Oct 2026</span><span data-fr="Stage de fin d’études de 6 mois">6-month end-of-studies internship</span><span data-fr="Surabaya, Indonésie">Surabaya, Indonesia</span></div>
+        <h3 data-fr="Refroidissement de batteries de véhicules électriques par boucle à caloduc">Loop heat pipe battery cooling for electric vehicles</h3>
+        <p class="sub" data-fr="Stagiaire ingénieur CFD · Institut Teknologi Sepuluh Nopember (ITS)">CFD Engineering Intern · Institut Teknologi Sepuluh Nopember (ITS)</p>
+        <p data-fr="Étude CFD 3D instationnaire d’un pack de batteries Li-ion refroidi par une boucle à caloduc fonctionnant à l’éthanol. J’ai construit le modèle STAR-CCM+, je l’ai calibré sur le banc d’essai du laboratoire, puis je l’ai utilisé pour étudier le débit de la pompe et l’espacement des cellules. Les résultats alimentent un article scientifique préparé par mon tuteur.">Transient 3D CFD study of a Li-ion battery pack cooled by a loop heat pipe with ethanol as the working fluid. I built the STAR-CCM+ model, calibrated it against the lab test rig and used it to study pump flow rate and cell spacing. The results feed a scientific paper prepared by my supervisor.</p>
         <ul class="pts">
-          <li>Built a 3D transient conjugate-heat-transfer model with multiphase working fluid and validated it against experimental thermocouple data.</li>
-          <li>Implemented a closed-loop momentum source to drive the coolant loop.</li>
-          <li>Reduced the polyhedral mesh from 1 M to 700 k cells while keeping y+ &lt; 1.</li>
-          <li>Located the marginal-efficiency knee of the pump curve to cut electrical power by half.</li>
+          <li data-fr="Construction d’un modèle 3D instationnaire de transferts thermiques conjugués avec fluide de travail multiphasique, validé sur les mesures expérimentales des thermocouples.">Built a 3D transient conjugate-heat-transfer model with multiphase working fluid and validated it against experimental thermocouple data.</li>
+          <li data-fr="Mise en place d’une source de quantité de mouvement en boucle fermée pour entraîner le fluide.">Implemented a closed-loop momentum source to drive the coolant loop.</li>
+          <li data-fr="Réduction du maillage polyédrique de 1 M à 700 k cellules en conservant y+ &amp;lt; 1.">Reduced the polyhedral mesh from 1 M to 700 k cells while keeping y+ &lt; 1.</li>
+          <li data-fr="Identification du coude de rendement marginal de la pompe pour diviser sa puissance électrique par deux.">Located the marginal-efficiency knee of the pump curve to cut electrical power by half.</li>
         </ul>
         <div class="readout r4">
-          <div><b>3 %</b><span>mean error vs experiment (target &lt; 5 %)</span></div>
-          <div><b>48 → 24 W</b><span>pump power at 50 L/min</span></div>
-          <div><b>+1.4 °C</b><span>peak cell temperature penalty</span></div>
-          <div><b>1 M → 700 k</b><span>cells, y+ &lt; 1</span></div>
+          <div><b>3 %</b><span data-fr="erreur moyenne vs essais (objectif &amp;lt; 5 %)">mean error vs experiment (target &lt; 5 %)</span></div>
+          <div><b>48 → 24 W</b><span data-fr="puissance pompe à 50 L/min">pump power at 50 L/min</span></div>
+          <div><b data-fr="+1,4 °C">+1.4 °C</b><span data-fr="sur la température max. des cellules">peak cell temperature penalty</span></div>
+          <div><b>1 M → 700 k</b><span data-fr="cellules, y+ &amp;lt; 1">cells, y+ &lt; 1</span></div>
         </div>
-        <ul class="tags"><li>STAR-CCM+</li><li>Conjugate heat transfer</li><li>Multiphase</li><li>Python</li><li>Experimental validation</li></ul>
-        <div class="note">Internship report confidential. Detailed results are reserved for an upcoming journal paper.</div>
+        <ul class="tags"><li>STAR-CCM+</li><li data-fr="Transferts conjugués">Conjugate heat transfer</li><li data-fr="Multiphasique">Multiphase</li><li>Python</li><li data-fr="Validation expérimentale">Experimental validation</li></ul>
+        <div class="note" data-fr="Rapport de stage confidentiel. Les résultats détaillés sont réservés à un article scientifique à paraître.">Internship report confidential. Detailed results are reserved for an upcoming journal paper.</div>
       </div>
       <div class="media">
-        <figure><img src="its-velocity.webp" alt="Velocity vectors of the working fluid along the loop heat pipe and through the battery module, 0 to 4 m/s" loading="lazy" width="1297" height="605"><figcaption>Velocity vectors of the working fluid along the loop and through the battery module (0–4 m/s).</figcaption></figure>
+        <figure><img src="its-velocity.webp" alt="Velocity vectors of the working fluid along the loop heat pipe and through the battery module, 0 to 4 m/s" data-fr-alt="Vecteurs vitesse du fluide le long de la boucle à caloduc et dans le module batterie, de 0 à 4 m/s" loading="lazy" width="1297" height="605"><figcaption data-fr="Vecteurs vitesse du fluide de travail le long de la boucle et dans le module batterie (0–4 m/s).">Velocity vectors of the working fluid along the loop and through the battery module (0–4 m/s).</figcaption></figure>
       </div>
     </article>
 
-    <article class="run solo">
+    <article class="run solo" id="p-egis">
       <div class="body">
-        <div class="meta"><span>Sep 2024 – Jan 2025</span><span>Internship</span><span>Martinique, France</span></div>
-        <h3>Rehabilitation of a fire hose reel network</h3>
-        <p class="sub">Fluid Engineering Intern, HVAC &amp; Hydraulic Design · Egis Bâtiment Antilles-Guyane</p>
-        <p>Alongside HVAC and hydraulic sizing for commercial and healthcare buildings, I worked on the design-build rehabilitation of the fire hose reel network of a penitentiary centre in Martinique. The existing network did not meet NF EN 671-1 and NF S62-201: 28 hose reels had insufficient pressure or non-compliant DN 40 piping.</p>
+        <div class="meta"><span data-fr="Sept. 2024 – janv. 2025">Sep 2024 – Jan 2025</span><span data-fr="Stage">Internship</span><span>Martinique, France</span></div>
+        <h3 data-fr="Réhabilitation d’un réseau de robinets d’incendie armés (RIA)">Rehabilitation of a fire hose reel network</h3>
+        <p class="sub" data-fr="Stagiaire ingénieur fluides, CVC &amp;amp; hydraulique · Egis Bâtiment Antilles-Guyane">Fluid Engineering Intern, HVAC &amp; Hydraulic Design · Egis Bâtiment Antilles-Guyane</p>
+        <p data-fr="En plus du dimensionnement CVC et hydraulique de bâtiments tertiaires et de santé, j’ai travaillé sur la réhabilitation, en conception-réalisation, du réseau de RIA d’un centre pénitentiaire en Martinique. Le réseau existant ne respectait pas les normes NF EN 671-1 et NF S62-201 : 28 RIA avaient une pression insuffisante ou une tuyauterie DN 40 non conforme.">Alongside HVAC and hydraulic sizing for commercial and healthcare buildings, I worked on the design-build rehabilitation of the fire hose reel network of a penitentiary centre in Martinique. The existing network did not meet NF EN 671-1 and NF S62-201: 28 hose reels had insufficient pressure or non-compliant DN 40 piping.</p>
         <ul class="pts">
-          <li>Surveyed and located the 44 hose reels on site plans and identified the hydraulically worst-placed one (3rd floor of the cross-shaped building).</li>
-          <li>Sized a buried ring main of about 1.1 km, including 410 m of new pipe, with velocity kept under 3 m/s (APSAD R5).</li>
-          <li>Applied the generalised Bernoulli equation with major and minor head losses to set the required network pressure.</li>
-          <li>Sized the booster pump and the fire water tank, and contributed to the technical specification (CCTP, lot 22).</li>
+          <li data-fr="Recensement et localisation des 44 RIA sur les plans, et identification du plus défavorisé hydrauliquement (R+3 du bâtiment en croix).">Surveyed and located the 44 hose reels on site plans and identified the hydraulically worst-placed one (3rd floor of the cross-shaped building).</li>
+          <li data-fr="Dimensionnement d’un réseau enterré en boucle d’environ 1,1 km, dont 410 m de canalisation neuve, avec une vitesse limitée à 3 m/s (APSAD R5).">Sized a buried ring main of about 1.1 km, including 410 m of new pipe, with velocity kept under 3 m/s (APSAD R5).</li>
+          <li data-fr="Application du théorème de Bernoulli généralisé, avec pertes de charge régulières et singulières, pour fixer la pression requise.">Applied the generalised Bernoulli equation with major and minor head losses to set the required network pressure.</li>
+          <li data-fr="Dimensionnement du surpresseur et de la cuve incendie, et contribution au CCTP (lot 22).">Sized the booster pump and the fire water tank, and contributed to the technical specification (CCTP, lot 22).</li>
         </ul>
         <div class="readout r4">
-          <div><b>8.36 bar</b><span>required ring-main pressure</span></div>
-          <div><b>15.36 m³/h</b><span>2 hose reels for 20 min</span></div>
-          <div><b>≈ 5.1 kW</b><span>booster pump power</span></div>
-          <div><b>11 m³</b><span>tank (10 m³ useful)</span></div>
+          <div><b data-fr="8,36 bar">8.36 bar</b><span data-fr="pression requise dans la boucle">required ring-main pressure</span></div>
+          <div><b data-fr="15,36 m³/h">15.36 m³/h</b><span data-fr="2 RIA pendant 20 min">2 hose reels for 20 min</span></div>
+          <div><b data-fr="≈ 5,1 kW">≈ 5.1 kW</b><span data-fr="puissance du surpresseur">booster pump power</span></div>
+          <div><b>11 m³</b><span data-fr="cuve (10 m³ utiles)">tank (10 m³ useful)</span></div>
         </div>
-        <ul class="tags"><li>Pressure-drop calculation</li><li>Pump sizing</li><li>Fire safety standards</li><li>Technical specification</li></ul>
-        <div class="note">Client documents confidential. Plans and calculation notes are not published.</div>
+        <ul class="tags"><li data-fr="Calcul de pertes de charge">Pressure-drop calculation</li><li data-fr="Dimensionnement de pompe">Pump sizing</li><li data-fr="Normes incendie">Fire safety standards</li><li data-fr="Cahier des charges technique">Technical specification</li></ul>
+        <div class="note" data-fr="Documents client confidentiels. Les plans et notes de calcul ne sont pas publiés.">Client documents confidential. Plans and calculation notes are not published.</div>
       </div>
     </article>
   </div>
@@ -296,126 +363,126 @@ footer p{margin:0;color:var(--muted)}
 <!-- AERO & CFD -->
 <section class="block" id="aero">
   <div class="wrap">
-    <div class="sec-head"><div class="bar"></div><h2>Aerodynamics &amp; CFD projects</h2><p>Academic and industrial case studies at INSA Hauts-de-France, all run in STAR-CCM+ unless noted.</p></div>
+    <div class="sec-head"><div class="bar"></div><h2 data-fr="Projets aérodynamique &amp;amp; CFD">Aerodynamics &amp; CFD projects</h2><p data-fr="Études de cas académiques et industrielles à l’INSA Hauts-de-France, toutes réalisées sous STAR-CCM+ sauf mention contraire.">Academic and industrial case studies at INSA Hauts-de-France, all run in STAR-CCM+ unless noted.</p></div>
 
-    <article class="run">
+    <article class="run" id="p-arpex">
       <div class="body">
-        <div class="meta"><span>Sep 2025 – Feb 2026</span><span>Team of 6</span><span>INSA HdF × IUT GEII</span></div>
-        <h3>ARPEX electric racing concept car</h3>
-        <p class="sub">Project lead and aerodynamics owner</p>
-        <p>A long-term project to design an electric racing concept car with camera-based indirect vision. I led a six-person team across three workstreams (chassis, aerodynamics and an embedded F1-style steering wheel) and personally owned the aerodynamics.</p>
+        <div class="meta"><span data-fr="Sept. 2025 – févr. 2026">Sep 2025 – Feb 2026</span><span data-fr="Équipe de 6">Team of 6</span><span>INSA HdF × IUT GEII</span></div>
+        <h3 data-fr="ARPEX, concept-car électrique de course">ARPEX electric racing concept car</h3>
+        <p class="sub" data-fr="Chef de projet et responsable aérodynamique">Project lead and aerodynamics owner</p>
+        <p data-fr="Projet longue durée de conception d’un concept-car électrique de course à vision indirecte par caméras. J’ai dirigé une équipe de six personnes sur trois axes (châssis, aérodynamique et volant embarqué type F1) et pris en charge moi-même l’aérodynamique.">A long-term project to design an electric racing concept car with camera-based indirect vision. I led a six-person team across three workstreams (chassis, aerodynamics and an embedded F1-style steering wheel) and personally owned the aerodynamics.</p>
         <ul class="pts">
-          <li>Diagnosed an internal cockpit over-pressure that was cancelling downforce, and designed a side duct that vents it while cooling the battery pack by forced convection.</li>
-          <li>Characterised drag and downforce over a 100–200 km/h sweep and compared turbulence models (k-ε variants, k-ω SST) on skin friction.</li>
-          <li>Identified the rear-body wake as the dominant drag source for the next iteration (flat floor, diffuser, wings, front intakes).</li>
-          <li>Ran the project with SWOT, risk matrix, QCD trade-offs and PDCA reviews through to the final jury.</li>
+          <li data-fr="Diagnostic d’une surpression interne dans le cockpit qui annulait l’appui, et conception d’une écope latérale qui l’évacue tout en refroidissant le pack batterie par convection forcée.">Diagnosed an internal cockpit over-pressure that was cancelling downforce, and designed a side duct that vents it while cooling the battery pack by forced convection.</li>
+          <li data-fr="Caractérisation de la traînée et de l’appui entre 100 et 200 km/h, et comparaison des modèles de turbulence (variantes k-ε, k-ω SST) sur le frottement pariétal.">Characterised drag and downforce over a 100–200 km/h sweep and compared turbulence models (k-ε variants, k-ω SST) on skin friction.</li>
+          <li data-fr="Identification du sillage arrière comme principale source de traînée pour la prochaine itération (fond plat, diffuseur, ailerons, prises d’air avant).">Identified the rear-body wake as the dominant drag source for the next iteration (flat floor, diffuser, wings, front intakes).</li>
+          <li data-fr="Pilotage du projet avec SWOT, matrice des risques, arbitrages QCD et revues PDCA jusqu’à la soutenance finale.">Ran the project with SWOT, risk matrix, QCD trade-offs and PDCA reviews through to the final jury.</li>
         </ul>
         <div class="readout r4">
-          <div><b>150 kgf</b><span>downforce at 200 km/h</span></div>
-          <div><b>188 kgf</b><span>drag at 200 km/h</span></div>
-          <div><b>Cd 0.45</b><span>Cz 0.39</span></div>
-          <div><b>L/D 0.8</b><span>vs 0.7 for the reference concept</span></div>
+          <div><b>150 kgf</b><span data-fr="d’appui à 200 km/h">downforce at 200 km/h</span></div>
+          <div><b>188 kgf</b><span data-fr="de traînée à 200 km/h">drag at 200 km/h</span></div>
+          <div><b data-fr="Cd 0,45">Cd 0.45</b><span data-fr="Cz 0,39">Cz 0.39</span></div>
+          <div><b data-fr="L/D 0,8">L/D 0.8</b><span data-fr="contre 0,7 pour le concept de référence">vs 0.7 for the reference concept</span></div>
         </div>
-        <ul class="tags"><li>STAR-CCM+</li><li>External aerodynamics</li><li>Surface wrapping</li><li>Project management</li><li>SolidWorks</li></ul>
+        <ul class="tags"><li>STAR-CCM+</li><li data-fr="Aérodynamique externe">External aerodynamics</li><li data-fr="Surface wrapping">Surface wrapping</li><li data-fr="Gestion de projet">Project management</li><li>SolidWorks</li></ul>
         <div class="docs">
-          <a class="doc" href="ARPEX_final_review.pdf" target="_blank" rel="noopener"><span class="ext">PDF</span>Final review deck <small>32 p · FR</small></a>
-          <a class="doc" href="ARPEX_specifications.pdf" target="_blank" rel="noopener"><span class="ext">PDF</span>Specifications <small>15 p · FR</small></a>
+          <a class="doc" href="ARPEX_final_review.pdf" target="_blank" rel="noopener" data-fr="&lt;span class=&quot;ext&quot;&gt;PDF&lt;/span&gt;Présentation finale &lt;small&gt;32 p · FR&lt;/small&gt;"><span class="ext">PDF</span>Final review deck <small>32 p · FR</small></a>
+          <a class="doc" href="ARPEX_specifications.pdf" target="_blank" rel="noopener" data-fr="&lt;span class=&quot;ext&quot;&gt;PDF&lt;/span&gt;Cahier des charges &lt;small&gt;15 p · FR&lt;/small&gt;"><span class="ext">PDF</span>Specifications <small>15 p · FR</small></a>
         </div>
       </div>
       <div class="media">
-        <figure><img src="arpex-pressure.webp" alt="Absolute pressure field on the ARPEX body side view" loading="lazy" width="1015" height="376"><figcaption>Absolute pressure on the body and symmetry plane, 200 km/h.</figcaption></figure>
+        <figure><img src="arpex-pressure.webp" alt="Absolute pressure field on the ARPEX body side view" data-fr-alt="Champ de pression absolue sur la carrosserie ARPEX, vue de côté" loading="lazy" width="1015" height="376"><figcaption data-fr="Pression absolue sur la carrosserie et le plan de symétrie, 200 km/h.">Absolute pressure on the body and symmetry plane, 200 km/h.</figcaption></figure>
         <div class="pair">
-          <figure class="pad"><img src="arpex-cooling.webp" alt="ARPEX body with the side cooling duct path highlighted" loading="lazy" width="805" height="436"><figcaption>Side duct venting the cockpit and cooling the battery.</figcaption></figure>
-          <figure class="pad"><img src="arpex-chassis.webp" alt="Tubular chassis fitted inside the ARPEX body" loading="lazy" width="1288" height="503"><figcaption>Body fitted around the 56-tube chassis.</figcaption></figure>
+          <figure class="pad"><img src="arpex-cooling.webp" alt="ARPEX body with the side cooling duct path highlighted" data-fr-alt="Carrosserie ARPEX avec le tracé de l’écope latérale" loading="lazy" width="805" height="436"><figcaption data-fr="Écope latérale qui ventile le cockpit et refroidit la batterie.">Side duct venting the cockpit and cooling the battery.</figcaption></figure>
+          <figure class="pad"><img src="arpex-chassis.webp" alt="Tubular chassis fitted inside the ARPEX body" data-fr-alt="Châssis tubulaire intégré dans la carrosserie ARPEX" loading="lazy" width="1288" height="503"><figcaption data-fr="Carrosserie ajustée autour du châssis tubulaire de 56 tubes.">Body fitted around the 56-tube chassis.</figcaption></figure>
         </div>
       </div>
     </article>
 
-    <article class="run">
+    <article class="run" id="p-nascar">
       <div class="body">
-        <div class="meta"><span>Oct – Nov 2025</span><span>Pair project</span><span>INSA HdF</span></div>
-        <h3>NASCAR drafting with a translating overset mesh</h3>
-        <p class="sub">CFD of the slipstream effect during an overtake</p>
-        <p>Can STAR-CCM+ capture drafting when one car moves relative to another? We modelled two simplified Gen-6 stock cars (5 × 1.95 × 1.42 m) at about 320 km/h and moved the follower through an overset region to track its drag and lift coefficients as the gap closes.</p>
+        <div class="meta"><span data-fr="Oct. – nov. 2025">Oct – Nov 2025</span><span data-fr="Projet en binôme">Pair project</span><span>INSA HdF</span></div>
+        <h3 data-fr="Aspiration en NASCAR avec un maillage overset en translation">NASCAR drafting with a translating overset mesh</h3>
+        <p class="sub" data-fr="CFD de l’effet d’aspiration lors d’un dépassement">CFD of the slipstream effect during an overtake</p>
+        <p data-fr="STAR-CCM+ peut-il capturer l’aspiration quand une voiture se déplace par rapport à l’autre ? Nous avons modélisé deux stock-cars Gen-6 simplifiées (5 × 1,95 × 1,42 m) à environ 320 km/h et déplacé la voiture suiveuse dans une région overset pour suivre ses coefficients de traînée et de portance à mesure que l’écart se réduit.">Can STAR-CCM+ capture drafting when one car moves relative to another? We modelled two simplified Gen-6 stock cars (5 × 1.95 × 1.42 m) at about 320 km/h and moved the follower through an overset region to track its drag and lift coefficients as the gap closes.</p>
         <ul class="pts">
-          <li>Built static and dynamic cases in 2D and 3D, with the overset zone translating inside a refined control volume.</li>
-          <li>Realizable k-ε two-layer model with all-y+ wall treatment and 8 prism layers.</li>
-          <li>Compared static vs dynamic and 2D vs 3D drag and lift against the 0–10 m gap range; values matched published NASCAR coefficients (Cd ≈ 0.45–0.5).</li>
+          <li data-fr="Cas statiques et dynamiques en 2D et 3D, la zone overset se déplaçant dans un volume de contrôle raffiné.">Built static and dynamic cases in 2D and 3D, with the overset zone translating inside a refined control volume.</li>
+          <li data-fr="Modèle k-ε Realizable deux couches, traitement de paroi all-y+ et 8 couches prismatiques.">Realizable k-ε two-layer model with all-y+ wall treatment and 8 prism layers.</li>
+          <li data-fr="Comparaison statique/dynamique et 2D/3D de la traînée et de la portance pour des écarts de 0 à 10 m ; valeurs cohérentes avec les coefficients NASCAR publiés (Cd ≈ 0,45–0,5).">Compared static vs dynamic and 2D vs 3D drag and lift against the 0–10 m gap range; values matched published NASCAR coefficients (Cd ≈ 0.45–0.5).</li>
         </ul>
         <div class="readout">
-          <div><b>89 m/s</b><span>free-stream, straight-line speed</span></div>
-          <div><b>0 – 10 m</b><span>gap swept between cars</span></div>
-          <div><b>2D + 3D</b><span>static and dynamic cases</span></div>
+          <div><b>89 m/s</b><span data-fr="vitesse amont, en ligne droite">free-stream, straight-line speed</span></div>
+          <div><b>0 – 10 m</b><span data-fr="écart balayé entre les voitures">gap swept between cars</span></div>
+          <div><b>2D + 3D</b><span data-fr="cas statiques et dynamiques">static and dynamic cases</span></div>
         </div>
-        <ul class="tags"><li>Overset mesh</li><li>Moving mesh</li><li>Unsteady RANS</li><li>Vehicle interaction</li></ul>
+        <ul class="tags"><li data-fr="Maillage overset">Overset mesh</li><li data-fr="Maillage mobile">Moving mesh</li><li data-fr="RANS instationnaire">Unsteady RANS</li><li data-fr="Interaction entre véhicules">Vehicle interaction</li></ul>
         <div class="docs">
-          <a class="doc" href="NASCAR_drafting_CFD.pdf" target="_blank" rel="noopener"><span class="ext">PDF</span>Final presentation <small>24 p · FR</small></a>
-          <a class="doc" href="NASCAR_specifications.pdf" target="_blank" rel="noopener"><span class="ext">PDF</span>Specifications <small>8 p · FR</small></a>
+          <a class="doc" href="NASCAR_drafting_CFD.pdf" target="_blank" rel="noopener" data-fr="&lt;span class=&quot;ext&quot;&gt;PDF&lt;/span&gt;Présentation finale &lt;small&gt;24 p · FR&lt;/small&gt;"><span class="ext">PDF</span>Final presentation <small>24 p · FR</small></a>
+          <a class="doc" href="NASCAR_specifications.pdf" target="_blank" rel="noopener" data-fr="&lt;span class=&quot;ext&quot;&gt;PDF&lt;/span&gt;Cahier des charges &lt;small&gt;8 p · FR&lt;/small&gt;"><span class="ext">PDF</span>Specifications <small>8 p · FR</small></a>
         </div>
       </div>
       <div class="media">
-        <figure><img src="nascar-pressure.webp" alt="Pressure field around two following cars in the dynamic 2D case" loading="lazy" width="800" height="278"><figcaption>Dynamic 2D case: pressure field as the follower closes in.</figcaption></figure>
-        <figure><img src="nascar-velocity.webp" alt="Velocity field and wake behind the lead car" loading="lazy" width="930" height="284"><figcaption>Velocity field: the follower sits in the lead car's low-speed wake.</figcaption></figure>
-        <figure><img src="nascar-overset.webp" alt="Overset mesh around the second car" loading="lazy" width="1400" height="383"><figcaption>Overset mesh around the following car.</figcaption></figure>
+        <figure><img src="nascar-pressure.webp" alt="Pressure field around two following cars in the dynamic 2D case" data-fr-alt="Champ de pression autour de deux voitures en file, cas dynamique 2D" loading="lazy" width="800" height="278"><figcaption data-fr="Cas dynamique 2D : champ de pression quand la voiture suiveuse se rapproche.">Dynamic 2D case: pressure field as the follower closes in.</figcaption></figure>
+        <figure><img src="nascar-velocity.webp" alt="Velocity field and wake behind the lead car" data-fr-alt="Champ de vitesse et sillage derrière la voiture de tête" loading="lazy" width="930" height="284"><figcaption data-fr="Champ de vitesse : la voiture suiveuse est dans le sillage lent de la voiture de tête.">Velocity field: the follower sits in the lead car's low-speed wake.</figcaption></figure>
+        <figure><img src="nascar-overset.webp" alt="Overset mesh around the second car" data-fr-alt="Maillage overset autour de la seconde voiture" loading="lazy" width="1400" height="383"><figcaption data-fr="Maillage overset autour de la voiture suiveuse.">Overset mesh around the following car.</figcaption></figure>
       </div>
     </article>
 
-    <article class="run">
+    <article class="run" id="p-novares">
       <div class="body">
-        <div class="meta"><span>Oct 2025</span><span>Pair project</span><span>Industrial case: Novares</span></div>
-        <h3>Multiphase oil-jet cooling for e-motors</h3>
-        <p class="sub">Oil-air CFD for a direct oil-cooling system</p>
-        <p>Novares develops direct oil cooling for electric motors. We simulated an oil jet impinging on a target surface, where the flow breaks into films and droplets, and then made the model affordable to run.</p>
+        <div class="meta"><span data-fr="Oct. 2025">Oct 2025</span><span data-fr="Projet en binôme">Pair project</span><span data-fr="Cas industriel : Novares">Industrial case: Novares</span></div>
+        <h3 data-fr="Refroidissement multiphasique par jet d’huile de moteurs électriques">Multiphase oil-jet cooling for e-motors</h3>
+        <p class="sub" data-fr="CFD huile-air pour un système de refroidissement direct par huile">Oil-air CFD for a direct oil-cooling system</p>
+        <p data-fr="Novares développe le refroidissement direct par huile des moteurs électriques. Nous avons simulé un jet d’huile impactant une surface cible, où l’écoulement se divise en films et en gouttelettes, puis rendu le modèle abordable en temps de calcul.">Novares develops direct oil cooling for electric motors. We simulated an oil jet impinging on a target surface, where the flow breaks into films and droplets, and then made the model affordable to run.</p>
         <ul class="pts">
-          <li>Coupled VOF (air/oil), Lagrangian droplets and a fluid-film model with resolved transitions between regimes.</li>
-          <li>Cut run time with an adaptive time step (CFL 0.4 → 1), geometric symmetry and refinement limited to critical zones.</li>
-          <li>Improved interface capture (HRIC sharpening 0.2 → 0.3, blob sphericity 0.7 → 0.8) and a convergent nozzle.</li>
-          <li>Added the energy model to post-process the heat transfer coefficient h = q / (T<sub>wall</sub> − T<sub>ref</sub>).</li>
+          <li data-fr="Couplage VOF (air/huile), gouttelettes lagrangiennes et film fluide, avec transitions résolues entre les régimes.">Coupled VOF (air/oil), Lagrangian droplets and a fluid-film model with resolved transitions between regimes.</li>
+          <li data-fr="Réduction du temps de calcul : pas de temps adaptatif (CFL 0,4 → 1), symétrie géométrique et raffinement limité aux zones critiques.">Cut run time with an adaptive time step (CFL 0.4 → 1), geometric symmetry and refinement limited to critical zones.</li>
+          <li data-fr="Meilleure capture de l’interface (HRIC sharpening 0,2 → 0,3, sphéricité des blobs 0,7 → 0,8) et buse convergente.">Improved interface capture (HRIC sharpening 0.2 → 0.3, blob sphericity 0.7 → 0.8) and a convergent nozzle.</li>
+          <li data-fr="Ajout du modèle d’énergie pour post-traiter le coefficient d’échange h = q / (T&lt;sub&gt;paroi&lt;/sub&gt; − T&lt;sub&gt;réf&lt;/sub&gt;).">Added the energy model to post-process the heat transfer coefficient h = q / (T<sub>wall</sub> − T<sub>ref</sub>).</li>
         </ul>
         <div class="readout">
-          <div><b>≈ 214 h → 3.3 h</b><span>estimated full-run time</span></div>
-          <div><b>4</b><span>coupled phase models</span></div>
+          <div><b data-fr="≈ 214 h → 3,3 h">≈ 214 h → 3.3 h</b><span data-fr="temps de calcul complet estimé">estimated full-run time</span></div>
+          <div><b>4</b><span data-fr="modèles de phase couplés">coupled phase models</span></div>
         </div>
-        <ul class="tags"><li>VOF</li><li>Lagrangian</li><li>Fluid film</li><li>Thermal management</li></ul>
+        <ul class="tags"><li>VOF</li><li data-fr="Lagrangien">Lagrangian</li><li data-fr="Film fluide">Fluid film</li><li>Thermal management</li></ul>
         <div class="docs">
-          <a class="doc" href="Novares_multiphase_CFD.pdf" target="_blank" rel="noopener"><span class="ext">PDF</span>Presentation <small>16 p · FR</small></a>
+          <a class="doc" href="Novares_multiphase_CFD.pdf" target="_blank" rel="noopener" data-fr="&lt;span class=&quot;ext&quot;&gt;PDF&lt;/span&gt;Présentation &lt;small&gt;16 p · FR&lt;/small&gt;"><span class="ext">PDF</span>Presentation <small>16 p · FR</small></a>
         </div>
       </div>
       <div class="media">
-        <figure><img src="novares-film.webp" alt="Oil film thickness and droplets on the target surface" loading="lazy" width="972" height="693"><figcaption>Oil film thickness and droplet field on the target surface.</figcaption></figure>
+        <figure><img src="novares-film.webp" alt="Oil film thickness and droplets on the target surface" data-fr-alt="Épaisseur du film d’huile et gouttelettes sur la surface cible" loading="lazy" width="972" height="693"><figcaption data-fr="Épaisseur du film d’huile et gouttelettes sur la surface cible.">Oil film thickness and droplet field on the target surface.</figcaption></figure>
       </div>
     </article>
 
-    <article class="run">
+    <article class="run" id="p-turbulence">
       <div class="body">
-        <div class="meta"><span>Jan – Feb 2026</span><span>Team of 3</span><span>INSA HdF</span></div>
-        <h3>Turbulence modelling of a backward-facing step</h3>
-        <p class="sub">RANS validation against Driver &amp; Seegmiller (1985)</p>
-        <p>The backward-facing step is the classic test case for separation and reattachment. We validated 2D RANS models against the experimental benchmark, then tested passive and active ways to control the recirculation zone.</p>
+        <div class="meta"><span data-fr="Janv. – févr. 2026">Jan – Feb 2026</span><span data-fr="Équipe de 3">Team of 3</span><span>INSA HdF</span></div>
+        <h3 data-fr="Modélisation de la turbulence en aval d’une marche descendante">Turbulence modelling of a backward-facing step</h3>
+        <p class="sub" data-fr="Validation RANS face à Driver &amp;amp; Seegmiller (1985)">RANS validation against Driver &amp; Seegmiller (1985)</p>
+        <p data-fr="La marche descendante est le cas test classique du décollement et du recollement. Nous avons validé des modèles RANS 2D sur la référence expérimentale, puis testé des moyens passifs et actifs de contrôler la zone de recirculation.">The backward-facing step is the classic test case for separation and reattachment. We validated 2D RANS models against the experimental benchmark, then tested passive and active ways to control the recirculation zone.</p>
         <ul class="pts">
-          <li>Mesh study (coarse, medium, fine polyhedral) with a low-Re approach and y+ verification.</li>
-          <li>Compared standard and Realizable k-ε on skin friction and reattachment length, and tested inlet boundary conditions.</li>
-          <li>Passive control with a sinusoidal wall (5 amplitudes) and active control with a wall jet at 10 % of U₀ (3 heights).</li>
+          <li data-fr="Étude de maillage (polyédrique grossier, moyen, fin) avec approche bas Reynolds et vérification du y+.">Mesh study (coarse, medium, fine polyhedral) with a low-Re approach and y+ verification.</li>
+          <li data-fr="Comparaison des modèles k-ε standard et Realizable sur le frottement pariétal et la longueur de recollement, et test des conditions d’entrée.">Compared standard and Realizable k-ε on skin friction and reattachment length, and tested inlet boundary conditions.</li>
+          <li data-fr="Contrôle passif par paroi sinusoïdale (5 amplitudes) et contrôle actif par jet pariétal à 10 % de U₀ (3 hauteurs).">Passive control with a sinusoidal wall (5 amplitudes) and active control with a wall jet at 10 % of U₀ (3 heights).</li>
         </ul>
         <div class="readout">
-          <div><b>33 % → 7.45 %</b><span>reattachment error, standard → Realizable k-ε</span></div>
-          <div><b>U₀ = 38.67 m/s</b><span>step height 1.27 cm</span></div>
+          <div><b data-fr="33 % → 7,45 %">33 % → 7.45 %</b><span data-fr="erreur sur le recollement, k-ε standard → Realizable">reattachment error, standard → Realizable k-ε</span></div>
+          <div><b data-fr="U₀ = 38,67 m/s">U₀ = 38.67 m/s</b><span data-fr="hauteur de marche 1,27 cm">step height 1.27 cm</span></div>
         </div>
-        <ul class="tags"><li>RANS</li><li>Low-Re modelling</li><li>Mesh convergence</li><li>Flow control</li></ul>
+        <ul class="tags"><li>RANS</li><li data-fr="Modélisation bas Reynolds">Low-Re modelling</li><li data-fr="Convergence en maillage">Mesh convergence</li><li data-fr="Contrôle d’écoulement">Flow control</li></ul>
         <div class="docs">
-          <a class="doc" href="Turbulence_backward_facing_step.pdf" target="_blank" rel="noopener"><span class="ext">PDF</span>Presentation <small>34 p · FR</small></a>
+          <a class="doc" href="Turbulence_backward_facing_step.pdf" target="_blank" rel="noopener" data-fr="&lt;span class=&quot;ext&quot;&gt;PDF&lt;/span&gt;Présentation &lt;small&gt;34 p · FR&lt;/small&gt;"><span class="ext">PDF</span>Presentation <small>34 p · FR</small></a>
         </div>
       </div>
       <div class="media">
-        <figure><img src="turb-jet.webp" alt="Velocity field and recirculation downstream of the step with a wall jet" loading="lazy" width="1400" height="488"><figcaption>Velocity and streamlines behind the step, active jet case.</figcaption></figure>
+        <figure><img src="turb-jet.webp" alt="Velocity field and recirculation downstream of the step with a wall jet" data-fr-alt="Champ de vitesse et recirculation en aval de la marche avec jet pariétal" loading="lazy" width="1400" height="488"><figcaption data-fr="Vitesse et lignes de courant en aval de la marche, cas avec jet actif.">Velocity and streamlines behind the step, active jet case.</figcaption></figure>
       </div>
     </article>
 
-    <article class="run solo">
+    <article class="run solo" id="p-openfoam">
       <div class="body">
-        <div class="meta"><span>2025 – 2026</span><span>Individual</span><span>Open-source CFD</span></div>
-        <h3>OpenFOAM practice cases</h3>
-        <p>Self-directed work to move between commercial and open-source solvers: a NACA 0012 aerofoil case with force coefficients (Cd, Cl, Cm) extracted from <code>forceCoeffs.dat</code> and time-averaged in a Python notebook, and a parameterised cylinder case switched from laminar steady to RAS and transient for vortex shedding.</p>
+        <div class="meta"><span>2025 – 2026</span><span data-fr="Individuel">Individual</span><span data-fr="CFD open source">Open-source CFD</span></div>
+        <h3 data-fr="Cas d’entraînement OpenFOAM">OpenFOAM practice cases</h3>
+        <p data-fr="Travail personnel pour passer d’un solveur commercial à un solveur open source : un cas de profil NACA 0012 dont les coefficients d’efforts (Cd, Cl, Cm) sont extraits de &lt;code&gt;forceCoeffs.dat&lt;/code&gt; et moyennés dans un notebook Python, et un cas de cylindre paramétré passé du laminaire stationnaire au RAS instationnaire pour le lâcher tourbillonnaire.">Self-directed work to move between commercial and open-source solvers: a NACA 0012 aerofoil case with force coefficients (Cd, Cl, Cm) extracted from <code>forceCoeffs.dat</code> and time-averaged in a Python notebook, and a parameterised cylinder case switched from laminar steady to RAS and transient for vortex shedding.</p>
         <ul class="tags"><li>OpenFOAM</li><li>blockMesh</li><li>Python / NumPy</li><li>Matplotlib</li></ul>
       </div>
     </article>
@@ -425,50 +492,50 @@ footer p{margin:0;color:var(--muted)}
 <!-- ENERGY -->
 <section class="block" id="energy">
   <div class="wrap">
-    <div class="sec-head"><div class="bar"></div><h2>Energy &amp; building systems</h2><p>Sizing studies from the Building &amp; Energy track: duct networks, envelopes, solar gains and renewable plants.</p></div>
+    <div class="sec-head"><div class="bar"></div><h2 data-fr="Énergétique &amp;amp; bâtiment">Energy &amp; building systems</h2><p data-fr="Études de dimensionnement du parcours Bâtiment &amp;amp; Énergie : réseaux aérauliques, enveloppes, apports solaires et énergies renouvelables.">Sizing studies from the Building &amp; Energy track: duct networks, envelopes, solar gains and renewable plants.</p></div>
     <div class="cards">
-      <article class="card">
-        <div class="meta"><span>Dec 2025 – Jan 2026</span><span>Pair</span></div>
-        <h3>Smoke extraction for the Philharmonie de Paris</h3>
-        <p>Sizing of the smoke extraction network of a technical room: 38 duct sections, friction from the Swamee-Jain correlation and minor losses from standard charts, then fan and motor selection from the SAFTAIR catalogue.</p>
+      <article class="card" id="p-smoke">
+        <div class="meta"><span data-fr="Déc. 2025 – janv. 2026">Dec 2025 – Jan 2026</span><span data-fr="Binôme">Pair</span></div>
+        <h3 data-fr="Désenfumage pour la Philharmonie de Paris">Smoke extraction for the Philharmonie de Paris</h3>
+        <p data-fr="Dimensionnement du réseau de désenfumage d’un local technique : 38 tronçons, pertes régulières par la corrélation de Swamee-Jain et singulières par abaques, puis choix du ventilateur et du moteur dans le catalogue SAFTAIR.">Sizing of the smoke extraction network of a technical room: 38 duct sections, friction from the Swamee-Jain correlation and minor losses from standard charts, then fan and motor selection from the SAFTAIR catalogue.</p>
         <div class="readout">
-          <div><b>15 100 m³/h</b><span>extraction flow</span></div>
-          <div><b>1 042 Pa</b><span>total head incl. 10 % margin</span></div>
-          <div><b>5.5 kW</b><span>motor, fan at 82 % eff.</span></div>
+          <div><b>15 100 m³/h</b><span data-fr="débit d’extraction">extraction flow</span></div>
+          <div><b>1 042 Pa</b><span data-fr="perte totale, marge de 10 % incluse">total head incl. 10 % margin</span></div>
+          <div><b data-fr="5,5 kW">5.5 kW</b><span data-fr="moteur, ventilateur à 82 % de rendement">motor, fan at 82 % eff.</span></div>
         </div>
-        <div class="docs"><a class="doc" href="Smoke_extraction_Philharmonie.pdf" target="_blank" rel="noopener"><span class="ext">PDF</span>Report <small>12 p · FR</small></a></div>
+        <div class="docs"><a class="doc" href="Smoke_extraction_Philharmonie.pdf" target="_blank" rel="noopener" data-fr="&lt;span class=&quot;ext&quot;&gt;PDF&lt;/span&gt;Rapport &lt;small&gt;12 p · FR&lt;/small&gt;"><span class="ext">PDF</span>Report <small>12 p · FR</small></a></div>
       </article>
-      <article class="card">
-        <div class="meta"><span>Sep – Nov 2025</span><span>Team of 3</span></div>
-        <h3>Thermal renovation of a house</h3>
-        <p>Heat-loss audit under RT 2012 and NF EN 12831, condensation risk check, then a renovation plan: external insulation, new glazing, thermal bridge treatment and heat-recovery ventilation, with cost and subsidies.</p>
+      <article class="card" id="p-renovation">
+        <div class="meta"><span data-fr="Sept. – nov. 2025">Sep – Nov 2025</span><span data-fr="Équipe de 3">Team of 3</span></div>
+        <h3 data-fr="Rénovation thermique d’une maison">Thermal renovation of a house</h3>
+        <p data-fr="Bilan des déperditions selon la RT 2012 et la NF EN 12831, vérification du risque de condensation, puis plan de rénovation : isolation par l’extérieur, menuiseries, traitement des ponts thermiques et VMC double flux, avec coûts et aides.">Heat-loss audit under RT 2012 and NF EN 12831, condensation risk check, then a renovation plan: external insulation, new glazing, thermal bridge treatment and heat-recovery ventilation, with cost and subsidies.</p>
         <div class="readout">
-          <div><b>360 → 125 W/K</b><span>overall heat-loss coefficient</span></div>
-          <div><b>−65.2 %</b><span>heat losses (target −65 %)</span></div>
-          <div><b>8 – 12 yr</b><span>payback</span></div>
+          <div><b>360 → 125 W/K</b><span data-fr="coefficient global de déperdition">overall heat-loss coefficient</span></div>
+          <div><b data-fr="−65,2 %">−65.2 %</b><span data-fr="de déperditions (objectif −65 %)">heat losses (target −65 %)</span></div>
+          <div><b data-fr="8 – 12 ans">8 – 12 yr</b><span data-fr="retour sur investissement">payback</span></div>
         </div>
-        <div class="docs"><a class="doc" href="Building_thermal_renovation.pdf" target="_blank" rel="noopener"><span class="ext">PDF</span>Report <small>33 p · FR</small></a></div>
+        <div class="docs"><a class="doc" href="Building_thermal_renovation.pdf" target="_blank" rel="noopener" data-fr="&lt;span class=&quot;ext&quot;&gt;PDF&lt;/span&gt;Rapport &lt;small&gt;33 p · FR&lt;/small&gt;"><span class="ext">PDF</span>Report <small>33 p · FR</small></a></div>
       </article>
-      <article class="card">
-        <div class="meta"><span>Oct – Nov 2025</span><span>Team of 3</span></div>
-        <h3>Solar overhang and window heat gains</h3>
-        <p>Solar geometry and direct irradiance on a 6 m² window, with and without a horizontal overhang, for south, east and west façades and two overhang depths. Includes glazing reflection.</p>
+      <article class="card" id="p-solar">
+        <div class="meta"><span data-fr="Oct. – nov. 2025">Oct – Nov 2025</span><span data-fr="Équipe de 3">Team of 3</span></div>
+        <h3 data-fr="Casquette solaire et apports par vitrage">Solar overhang and window heat gains</h3>
+        <p data-fr="Géométrie solaire et irradiance directe sur une baie vitrée de 6 m², avec et sans casquette horizontale, pour les façades sud, est et ouest et deux profondeurs de casquette. Réflexion du vitrage incluse.">Solar geometry and direct irradiance on a 6 m² window, with and without a horizontal overhang, for south, east and west façades and two overhang depths. Includes glazing reflection.</p>
         <div class="readout">
-          <div><b>10 min</b><span>weather data step over a full year</span></div>
-          <div><b>up to 26 %</b><span>summer gain cut (south, 1 m overhang)</span></div>
+          <div><b>10 min</b><span data-fr="pas des données météo sur une année">weather data step over a full year</span></div>
+          <div><b data-fr="jusqu’à 26 %">up to 26 %</b><span data-fr="d’apports en moins l’été (sud, casquette de 1 m)">summer gain cut (south, 1 m overhang)</span></div>
         </div>
-        <div class="docs"><a class="doc" href="Solar_shading_study.pdf" target="_blank" rel="noopener"><span class="ext">PDF</span>Report <small>37 p · FR</small></a></div>
+        <div class="docs"><a class="doc" href="Solar_shading_study.pdf" target="_blank" rel="noopener" data-fr="&lt;span class=&quot;ext&quot;&gt;PDF&lt;/span&gt;Rapport &lt;small&gt;37 p · FR&lt;/small&gt;"><span class="ext">PDF</span>Report <small>37 p · FR</small></a></div>
       </article>
-      <article class="card">
-        <div class="meta"><span>Jan 2026</span><span>Pair</span></div>
-        <h3>Biogas plant for a farm in Martinique</h3>
-        <p>Pre-sizing of an agricultural anaerobic digestion unit with combined heat and power: biogas yield, digester design, energy balance, economics with ADEME grants and a probability × severity risk matrix.</p>
+      <article class="card" id="p-biogas">
+        <div class="meta"><span data-fr="Janv. 2026">Jan 2026</span><span data-fr="Binôme">Pair</span></div>
+        <h3 data-fr="Unité de méthanisation pour une exploitation agricole en Martinique">Biogas plant for a farm in Martinique</h3>
+        <p data-fr="Pré-dimensionnement d’une unité de méthanisation agricole avec cogénération : production de biogaz, conception du digesteur, bilan énergétique, rentabilité avec aides ADEME et matrice des risques probabilité × gravité.">Pre-sizing of an agricultural anaerobic digestion unit with combined heat and power: biogas yield, digester design, energy balance, economics with ADEME grants and a probability × severity risk matrix.</p>
         <div class="readout">
-          <div><b>3 212 MWh/yr</b><span>electricity, 367 kWe</span></div>
-          <div><b>13 – 15 %</b><span>IRR with grants</span></div>
-          <div><b>4.7 yr</b><span>payback</span></div>
+          <div><b data-fr="3 212 MWh/an">3 212 MWh/yr</b><span data-fr="d’électricité, 367 kWe">electricity, 367 kWe</span></div>
+          <div><b>13 – 15 %</b><span data-fr="TRI avec aides">IRR with grants</span></div>
+          <div><b data-fr="4,7 ans">4.7 yr</b><span data-fr="retour sur investissement">payback</span></div>
         </div>
-        <div class="docs"><a class="doc" href="Biogas_plant_Martinique.pdf" target="_blank" rel="noopener"><span class="ext">PDF</span>Report <small>38 p · FR</small></a></div>
+        <div class="docs"><a class="doc" href="Biogas_plant_Martinique.pdf" target="_blank" rel="noopener" data-fr="&lt;span class=&quot;ext&quot;&gt;PDF&lt;/span&gt;Rapport &lt;small&gt;38 p · FR&lt;/small&gt;"><span class="ext">PDF</span>Report <small>38 p · FR</small></a></div>
       </article>
     </div>
   </div>
@@ -477,19 +544,19 @@ footer p{margin:0;color:var(--muted)}
 <!-- MANAGEMENT -->
 <section class="block" id="management">
   <div class="wrap">
-    <div class="sec-head"><div class="bar"></div><h2>Project management</h2></div>
-    <article class="run solo">
+    <div class="sec-head"><div class="bar"></div><h2 data-fr="Gestion de projet">Project management</h2></div>
+    <article class="run solo" id="p-pongo">
       <div class="body">
-        <div class="meta"><span>Nov – Dec 2025</span><span>Team of 6</span><span>Project management course</span></div>
-        <h3>Pongo-Songo school and hygiene programme</h3>
-        <p class="sub">Project lead on a humanitarian project case study</p>
-        <p>A full pre-project for building a four-classroom primary school, training six teachers and running a community hygiene programme in a fictional village in Cameroon. As project lead I structured the charter: scope, stakeholders, SMART objectives, Gantt schedule, budget, risks and a PDCA convergence plan, and we presented it in a video pitch.</p>
+        <div class="meta"><span data-fr="Nov. – déc. 2025">Nov – Dec 2025</span><span data-fr="Équipe de 6">Team of 6</span><span data-fr="Cours de conduite de projet">Project management course</span></div>
+        <h3 data-fr="École et programme d’hygiène à Pongo-Songo">Pongo-Songo school and hygiene programme</h3>
+        <p class="sub" data-fr="Chef de projet sur une étude de cas humanitaire">Project lead on a humanitarian project case study</p>
+        <p data-fr="Avant-projet complet pour construire une école primaire de quatre classes, former six enseignants et mener un programme d’hygiène dans un village fictif du Cameroun. En tant que chef de projet, j’ai structuré le cahier des charges : périmètre, parties prenantes, objectifs SMART, Gantt, budget, risques et plan de convergence PDCA, présenté ensuite en vidéo.">A full pre-project for building a four-classroom primary school, training six teachers and running a community hygiene programme in a fictional village in Cameroon. As project lead I structured the charter: scope, stakeholders, SMART objectives, Gantt schedule, budget, risks and a PDCA convergence plan, and we presented it in a video pitch.</p>
         <div class="readout">
-          <div><b>€650 k</b><span>budget</span></div>
-          <div><b>12 months</b><span>schedule</span></div>
-          <div><b>900</b><span>children as direct beneficiaries</span></div>
+          <div><b data-fr="650 k€">€650 k</b><span data-fr="budget">budget</span></div>
+          <div><b data-fr="12 mois">12 months</b><span data-fr="durée">schedule</span></div>
+          <div><b>900</b><span data-fr="enfants bénéficiaires directs">children as direct beneficiaries</span></div>
         </div>
-        <div class="docs"><a class="doc" href="Pongo-Songo_project_charter.pdf" target="_blank" rel="noopener"><span class="ext">PDF</span>Project charter <small>14 p · FR</small></a></div>
+        <div class="docs"><a class="doc" href="Pongo-Songo_project_charter.pdf" target="_blank" rel="noopener" data-fr="&lt;span class=&quot;ext&quot;&gt;PDF&lt;/span&gt;Cahier des charges &lt;small&gt;14 p · FR&lt;/small&gt;"><span class="ext">PDF</span>Project charter <small>14 p · FR</small></a></div>
       </div>
     </article>
   </div>
@@ -498,43 +565,44 @@ footer p{margin:0;color:var(--muted)}
 <!-- CERTIFICATIONS -->
 <section class="block" id="certifications">
   <div class="wrap">
-    <div class="sec-head"><div class="bar"></div><h2>Certifications &amp; education</h2></div>
+    <div class="sec-head"><div class="bar"></div><h2 data-fr="Certifications &amp;amp; formation">Certifications &amp; education</h2></div>
     <div class="certs">
       <div class="cert">
-        <div class="meta"><span>Jul 2026</span></div>
+        <div class="meta"><span data-fr="Juil. 2026">Jul 2026</span></div>
         <h3>Google AI Essentials</h3>
         <p>Google Career Certificates</p>
         <div class="docs">
-          <a class="doc" href="https://www.credly.com/go/h5GVvW3A" target="_blank" rel="noopener">Verify on Credly</a>
-          <a class="doc" href="Cert_Google_AI_Essentials.pdf" target="_blank" rel="noopener"><span class="ext">PDF</span>Certificate</a>
+          <a class="doc" href="https://www.credly.com/go/h5GVvW3A" target="_blank" rel="noopener" data-fr="Vérifier sur Credly">Verify on Credly</a>
+          <a class="doc" href="Cert_Google_AI_Essentials.pdf" target="_blank" rel="noopener" data-fr="&lt;span class=&quot;ext&quot;&gt;PDF&lt;/span&gt;Certificat"><span class="ext">PDF</span>Certificate</a>
         </div>
       </div>
       <div class="cert">
-        <div class="meta"><span>Jul 2026</span></div>
+        <div class="meta"><span data-fr="Juil. 2026">Jul 2026</span></div>
         <h3>Claude 101</h3>
         <p>Anthropic</p>
-        <div class="docs"><a class="doc" href="Cert_Claude_101.pdf" target="_blank" rel="noopener"><span class="ext">PDF</span>Certificate</a></div>
+        <div class="docs"><a class="doc" href="Cert_Claude_101.pdf" target="_blank" rel="noopener" data-fr="&lt;span class=&quot;ext&quot;&gt;PDF&lt;/span&gt;Certificat"><span class="ext">PDF</span>Certificate</a></div>
       </div>
       <div class="cert">
-        <div class="meta"><span>Oct 2026</span></div>
-        <h3>Cybersecurity awareness</h3>
-        <p>INSA Hauts-de-France e-learning module</p>
-        <div class="docs"><a class="doc" href="Cert_Cybersecurity.pdf" target="_blank" rel="noopener"><span class="ext">PDF</span>Certificate</a></div>
+        <div class="meta"><span data-fr="Oct. 2026">Oct 2026</span></div>
+        <h3 data-fr="Sensibilisation à la cybersécurité">Cybersecurity awareness</h3>
+        <p data-fr="Module e-learning INSA Hauts-de-France">INSA Hauts-de-France e-learning module</p>
+        <div class="docs"><a class="doc" href="Cert_Cybersecurity.pdf" target="_blank" rel="noopener" data-fr="&lt;span class=&quot;ext&quot;&gt;PDF&lt;/span&gt;Certificat"><span class="ext">PDF</span>Certificate</a></div>
       </div>
     </div>
     <div class="edu" style="margin-top:44px">
-      <div><b>INSA Hauts-de-France, Valenciennes</b><span>MSc Mechanical &amp; Energy Engineering · 2023 – 2026 · degree awarded March 2027</span></div>
-      <div><b>Lycée Bellevue, Martinique</b><span>CPGE, Mathematics &amp; Physics · 2021 – 2023</span></div>
+      <div><b>INSA Hauts-de-France, Valenciennes</b><span data-fr="Cycle ingénieur Mécanique &amp;amp; Énergétique · 2023 – 2026 · diplôme remis en mars 2027">MSc Mechanical &amp; Energy Engineering · 2023 – 2026 · degree awarded March 2027</span></div>
+      <div><b>Lycée Bellevue, Martinique</b><span data-fr="CPGE, mathématiques &amp;amp; physique · 2021 – 2023">CPGE, Mathematics &amp; Physics · 2021 – 2023</span></div>
     </div>
   </div>
 </section>
 </main>
+<a class="to-index" href="#projects" id="to-index" hidden>↑ <span data-fr="Sommaire">All projects</span></a>
 
 <footer id="contact">
   <div class="wrap">
     <div>
-      <h2>Let's talk CFD.</h2>
-      <p>Open to CFD and thermal management roles from January 2027.</p>
+      <h2 data-fr="Parlons CFD.">Let's talk CFD.</h2>
+      <p data-fr="Ouvert aux postes en CFD et thermal management à partir de janvier 2027.">Open to CFD and thermal management roles from January 2027.</p>
     </div>
     <div>
       <div class="contact-row" style="margin-top:0">
@@ -548,6 +616,49 @@ footer p{margin:0;color:var(--muted)}
 
 <script>
 (function(){
+  var KEY='ms-lang', lang='en';
+  var TITLES={en:'Morgan Soupama | CFD & Thermal Management Engineer', fr:'Morgan Soupama | Ingénieur CFD & Thermal Management'};
+  var MSG={en:{copied:'Email copied',select:'Address selected, press Ctrl+C to copy'},fr:{copied:'Adresse copiée',select:'Adresse sélectionnée, faites Ctrl+C pour copier'}};
+  function apply(l){
+    lang=l;
+    document.documentElement.lang=l;
+    document.title=TITLES[l];
+    document.querySelectorAll('[data-fr]').forEach(function(el){
+      if(el.dataset.en===undefined) el.dataset.en=el.innerHTML;
+      el.innerHTML = l==='fr' ? el.dataset.fr : el.dataset.en;
+    });
+    document.querySelectorAll('[data-fr-alt]').forEach(function(el){
+      if(el.dataset.enAlt===undefined) el.dataset.enAlt=el.getAttribute('alt');
+      el.setAttribute('alt', l==='fr' ? el.dataset.frAlt : el.dataset.enAlt);
+    });
+    document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.lang===l)); });
+    var nav=document.querySelector('.nav'); if(nav) nav.setAttribute('aria-label', l==='fr'?'Sections':'Sections');
+  }
+  var initial='en';
+  try{
+    var q=new URLSearchParams(location.search).get('lang');
+    var saved=localStorage.getItem(KEY);
+    if(q==='fr'||q==='en') initial=q;
+    else if(saved==='fr'||saved==='en') initial=saved;
+    else if((navigator.language||'').toLowerCase().indexOf('fr')===0) initial='fr';
+  }catch(e){}
+  apply(initial);
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click', function(){
+      apply(b.dataset.lang);
+      try{ localStorage.setItem(KEY, b.dataset.lang); }catch(e){}
+    });
+  });
+
+  // floating "back to index" button, shown once the index has scrolled out of view
+  var idx=document.getElementById('projects'), btn=document.getElementById('to-index');
+  if(idx && btn && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      var e=es[0]; btn.hidden = e.isIntersecting || e.boundingClientRect.top > 0;
+    }).observe(idx);
+  }
+
+  // copy email buttons
   function wire(btnId, outId){
     var b=document.getElementById(btnId), o=document.getElementById(outId);
     if(!b) return;
@@ -557,11 +668,11 @@ footer p{margin:0;color:var(--muted)}
       function fallback(){
         var r=document.createRange(); r.selectNodeContents(b.querySelector('.mail'));
         var s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
-        done('Address selected, press Ctrl+C to copy');
+        done(MSG[lang].select);
       }
       try{
         if(navigator.clipboard && navigator.clipboard.writeText){
-          navigator.clipboard.writeText(mail).then(function(){done('Email copied');}, fallback);
+          navigator.clipboard.writeText(mail).then(function(){done(MSG[lang].copied);}, fallback);
         } else fallback();
       }catch(e){ fallback(); }
     });
